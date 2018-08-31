@@ -1,8 +1,7 @@
 import re
-import openpyxl
 import csv
 
-ff = open('C:/Users/Slayer/Desktop/20180801 모니터링 정보 (1)/collectl_output_EP_D_64.csv', 'wt',newline='', encoding='utf-8')
+ff = open('C:/Users/Slayer/Desktop/20180801 모k니터링 정보 (1)/collectl_output_EP_D_64.csv', 'wt',newline='', encoding='utf-8')
 wr = csv.writer(ff)
 # ws = wb.get_sheet_by_name("Sheet1")
 stack = 0
