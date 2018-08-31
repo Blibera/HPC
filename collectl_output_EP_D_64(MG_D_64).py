@@ -51,7 +51,6 @@ while True:
     else:
         stack = stack + 1
 
-    j=0
     i = i + 1
 f.close()
 
