@@ -5,7 +5,7 @@ ff = open('C:/Users/Slayer/Desktop/20180801 모k니터링 정보 (1)/collectl_ou
 wr = csv.writer(ff)
 # ws = wb.get_sheet_by_name("Sheet1")
 stack = 0
-i = 3
+i = 1
 list_out = []
 
 frist = csv.DictWriter(ff,[' ','','<-------------------CPU------------------->','','','','<-----------------Disks------------------->','','','','<-----------------Networks---------------->','',''])
