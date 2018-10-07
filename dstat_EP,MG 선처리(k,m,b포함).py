@@ -1,9 +1,9 @@
 import re
 import csv
 
-f = open("C:/Users/Slayer/Desktop/공유할것/dstat_EP_D_64.txt", 'r')
+f = open("C:/Users/Slayer/Desktop/공유할것/dstat_MG_D_64.txt", 'r')
 
-ff = open('C:/Users/Slayer/Desktop/공유할것/dstat_EP_D_64_변수제거 선처리.csv', 'wt',newline='', encoding='utf-8')
+ff = open('C:/Users/Slayer/Desktop/공유할것/dstat_MG_D_64_변수제거 선처리.csv', 'wt',newline='', encoding='utf-8')
 
 wr = csv.writer(ff)
 """
