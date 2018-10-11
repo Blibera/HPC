@@ -34,7 +34,9 @@ def split(text):
 
 
 write = csv.writer(f_csv)
+name = ['r','b','swpd','free','inact','active','si','so','bi','bo','in','cs','us','sy','id','wa','st','day','time']
 
+write.writerow(name)
 while True:
     line = f.readline()
     add = []
