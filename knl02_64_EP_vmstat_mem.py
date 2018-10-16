@@ -8,7 +8,7 @@ f_csv = open("C:/Users/Slayer/Desktop/공유할것/NPB_log_knl02_64/NPB_EP_log/v
 stack = 0
 string = ""
 add = []
-
+time_before = ""
 
 def split(text):
     cleaned_text = re.sub('                   ', ',', text)
@@ -54,4 +54,11 @@ while True:
             tol = line_comma.split(',')[i]
             tol = tol.strip()
             add.append(tol)
-        write.writerow(add)
+            if i == 18:
+                time = line_comma.split(',')[18]
+        if time_before == time:
+            time_before = time
+            pass
+        else:
+            write.writerow(add)
+            time_before = time

@@ -10,6 +10,7 @@ f_output = open("C:/Users/Slayer/Desktop/공유할것/NPB_log_knl02_64/NPB_EP_lo
 stack = 0
 string = ""
 add = []
+time_before = ""
 loop_12 = 0
 write = csv.writer(f_output)
 
@@ -18,63 +19,81 @@ while True:
     line_mem = f_mem.readline()
     comma_count_disk = line_disk.count(',')
     comma_count_mem = line_mem.count(',')
-    print(comma_count_disk)
-    print(comma_count_mem)
+    if not line_disk: break
     if stack == 0 :
-        for i in range(0,comma_count_disk):
-            if i == 10:
-                pass
-            elif i == 11:
-                pass
-            else:
-                tol = line_disk.split(',')[i]
-                add.append(tol)
-        for i in range(0,comma_count_mem):
+        for i in range(0,comma_count_disk-1):
+            tol = line_disk.split(',')[i]
+            tol = tol.strip()
+            add.append(tol)
+        for i in range(0, comma_count_mem + 1):
             tol = line_mem.split(',')[i]
+            tol = tol.strip()
             add.append(tol)
         write.writerow(add)
         stack = stack + 1
         add = []
     else:
-        if not line_disk: break
-        if loop_12 == 0:
-            for i in range(0, comma_count_disk+1):
-                if i == 10:
-                    pass
-                elif i == 11:
-                    pass
+        if loop_12 == 12:
+            for i in range(0, 67):
+                add[i] = add[i]/12
+                add[i] = round(add[i],3)
+            day = day.strip()
+            time = time.strip()
+            add.append(day)
+            add.append(time)
+            if time_before == time:
+                time_before = time
+                pass
+            else:
+                write.writerow(add)
+                time_before = time
+            loop_12 = 0
+            add = []
+            day = ''
+            time = ''
+            for i in range(0,52):
+                if i == 50:
+                    day = line_disk.split(',')[50]
+                elif i == 51:
+                    time = line_disk.split(',')[51]
                 else:
                     tol = line_disk.split(',')[i]
+                    tol = re.sub('\\n','',tol)
                     tol = int(tol)
                     add.append(tol)
-            for i in range(0, comma_count_mem):
-                if i == 17:
-                    break
-                tol = line_mem.split(',')[i]
+            for j in range(0,17):
+                tol = line_mem.split(',')[j]
+                tol = re.sub('\\n', '', tol)
                 tol = int(tol)
                 add.append(tol)
             loop_12 = loop_12 + 1
 
-        elif loop_12 < 11:
-            for i in range(0, comma_count_disk):
-                if i == 10:
-                    pass
-                elif i == 11:
-                    pass
+        elif loop_12 == 0:
+            for i in range(0,52):
+                if i == 50:
+                    day = line_disk.split(',')[50]
+                elif i == 51:
+                    time = line_disk.split(',')[51]
                 else:
                     tol = line_disk.split(',')[i]
-                    add[i] = int(add[i]) + int(tol)
-            for i in range(0, comma_count_mem-1):
-                if i+comma_count_disk == 17+comma_count_disk:
-                    break
-                else:
-                    tol = line_mem.split(',')[i]
-                    add[i+comma_count_disk] = int(add[i+comma_count_disk]) + int(tol)
+                    tol = re.sub('\\n','',tol)
+                    tol = int(tol)
+                    add.append(tol)
+            for j in range(0,17):
+                tol = line_mem.split(',')[j]
+                tol = re.sub('\\n', '', tol)
+                tol = int(tol)
+                add.append(tol)
             loop_12 = loop_12 + 1
+
         else:
-            for i in range(0, comma_count_disk + comma_count_mem - 3):
-                add[i] = add[i] / 12
-                add[i] = round(add[i], 3)
-            loop_12 = 0
-            write.writerow(add)
-            add = []
+            loop_12 = loop_12 + 1
+
+            for i in range(0,50):
+                tol = line_disk.split(',')[i]
+                tol = int(tol)
+                add[i] = add[i] + tol
+            for j in range(0,17):
+                tol = line_mem.split(',')[j]
+                tol = int(tol)
+                add[j+50] = add[j+50] + tol
