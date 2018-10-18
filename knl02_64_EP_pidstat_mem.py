@@ -33,7 +33,9 @@ def split(text):
     return cleaned_text
 
 
+name = ['time','uid','pid','stksize','stkref','command']
 write = csv.writer(f_csv)
+write.writerow(name)
 
 while True:
     line = f.readline()

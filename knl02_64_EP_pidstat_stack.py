@@ -33,7 +33,9 @@ def split(text):
     return cleaned_text
 
 
+name = ['time','uid','pid','stksize','stkref','command']
 write = csv.writer(f_csv)
+write.writerow(name)
 
 while True:
     line = f.readline()
@@ -56,6 +58,7 @@ for i in range(0, count):
         one_line = line_comma.split('Average:')[k]
         for l in range(1, 6):
             tol = one_line.split(',')[l]
+            tol = re.sub("Linux",'',tol)
             tol = tol.strip()
             add.append(tol)
         write.writerow(add)
