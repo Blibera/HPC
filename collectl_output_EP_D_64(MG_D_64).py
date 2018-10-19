@@ -1,11 +1,11 @@
 import re
 import csv
 
-ff = open('C:/Users/Slayer/Desktop/20180801 모k니터링 정보 (1)/collectl_output_EP_D_64.csv', 'wt',newline='', encoding='utf-8')
+ff = open('C:/Users/Slayer/Desktop/공유할것 (1)/collectl_output_EP_D_64.csv', 'wt',newline='', encoding='utf-8')
 wr = csv.writer(ff)
 # ws = wb.get_sheet_by_name("Sheet1")
-stack = 0
-i = 1
+stack = 1
+i = 3
 list_out = []
 
 frist = csv.DictWriter(ff,[' ','','<-------------------CPU------------------->','','','','<-----------------Disks------------------->','','','','<-----------------Networks---------------->','',''])
@@ -29,7 +29,7 @@ def split(text):
     cleaned_text = re.sub(' ', ',', cleaned_text)
     return cleaned_text
 
-f = open("C:/Users/Slayer/Desktop/20180801 모니터링 정보 (1)/collectl_output_EP_D_64.txt", 'r')
+f = open("C:/Users/Slayer/Desktop/공유할것 (1)/collectl_output_EP_D_64.txt", 'r')
 while True:
     line = f.readline()
     if not line: break
