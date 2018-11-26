@@ -1,7 +1,7 @@
 import csv
 import re
 
-name_list = ['bt.c','cg.d','ep.d','ft.d','is.d','lu.c','mg.d','sp.c']
+name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
 name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
 
 add = []
@@ -39,7 +39,7 @@ for i in range(0,8):
     name_add = name_list_add[i]
 
     # 경로 설정
-    b = "C:/Users/Slayer/Desktop/작업폴더/data/NPB_23_01_00/" + name_add + ".csv"
+    b = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + name_add + ".csv"
 
     # 파일 열기
     f_csv = open(b, 'w', newline='')
@@ -47,8 +47,8 @@ for i in range(0,8):
     # log파일이 10개라 10번 루프
     for j in range(0, 10):
         a = ""
-        a = "C:/Users/Slayer/Desktop/작업폴더/data/NPB_23_01_00/" + str(name) + "/00" + str(j) + "_dstat_log.txt"
-
+        a = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + str(name) + "/00" + str(j) + "_dstat_log.txt"
+        mem_stack = 0
         # 변수명을 적어주기 위해 1번만 수행
         if name_stack == 0:
             name_csv = ['usr', 'sys', 'idl', 'wai', 'hiq', 'siq|', 'read', 'writ', 'recv', 'send', 'in', 'out', 'int',
@@ -80,7 +80,6 @@ for i in range(0,8):
                 if mem_stack == 1:
                     line = re.sub('\|', ' ', line)
                     line = split(line)
-                    p = line.count(',')
 
                     for i in range(1, 61):
                         tol = line.split(',')[i]
@@ -97,6 +96,7 @@ for i in range(0,8):
 
         else:
             f = open(a, 'r')
+            mem_stack = 0
             while True:
                 line = f.readline()
                 if not line: break
@@ -104,7 +104,6 @@ for i in range(0,8):
                 if mem_stack == 1:
                     line = re.sub('\|', ' ', line)
                     line = split(line)
-                    p = line.count(',')
 
                     for i in range(1, 61):
                         tol = line.split(',')[i]
@@ -113,7 +112,6 @@ for i in range(0,8):
 
                     write.writerow(add)
                     add = []
-                    mem_stack = 0
 
                 # 스택작업
                 if 'free|  epoch' in line:
