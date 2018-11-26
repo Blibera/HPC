@@ -40,7 +40,7 @@ def int_num(text):
     return text
 name = ""
 name_add = ""
-for i in range(0,8):
+for i in range(0,9):
     name = name_list[i]
     name_add = name_list_add[i]
 
@@ -77,11 +77,9 @@ for i in range(0,8):
             for i in range(1,54):
                 tol = line.split(',')[i]
                 tol = re.sub('\n','',tol)
-                tol = int_num(tol)
                 add.append(tol)
 
             write.writerow(add)
-            tol = 0
             add = []
             mem_stack = 0
 
