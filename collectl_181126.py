@@ -165,7 +165,7 @@ for i in range(0,8):
                     add = []
                     network_stack = 0
 
-                # 스택작업
+                # 스택작업 
                 if 'User  Nice   Sys  Wait   IRQ  Soft Steal Guest NiceG  Idle  CPUs  Intr  Ctxsw  Proc  RunQ   Run   Avg1  Avg5 Avg15 RunT BlkT' in line:
                     cpu_stack = 1
                 elif 'KBRead RMerged  Reads SizeKB  KBWrite WMerged Writes SizeKB' in line:
