@@ -3,7 +3,7 @@ import re
 
 name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
 name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
-
+directory = "NPB_23_21_53"
 add = []
 
 name_stack = 0
@@ -30,6 +30,45 @@ def split(text):
     cleaned_text = re.sub(' ', ',', cleaned_text)
     return cleaned_text
 
+def int_num(text):
+    count_k = text.count("k")
+    count_b = text.count("B")
+    count_m = text.count("M")
+    count_g = text.count("G")
+
+    if count_k == 0:
+        pass
+    else:
+        text = re.sub("k", "", text)
+        text = float(text)
+        text = text*1000
+
+    if count_b == 0:
+        pass
+    else:
+        text = re.sub("B", "", text)
+        text = float(text)
+        text = text
+
+    if count_m == 0:
+        pass
+    else:
+        text = re.sub("M", "", text)
+        text = float(text)
+        text = text*1000
+
+    if count_g == 0:
+        pass
+    else:
+        text = re.sub("G", "", text)
+        text = float(text)
+        text = text*1000*1000
+
+
+
+    text = float(text)
+    return text
+
 for i in range(0,8):
     # 변수 초기화
     name_stack = 0
@@ -39,7 +78,7 @@ for i in range(0,8):
     name_add = name_list_add[i]
 
     # 경로 설정
-    b = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + name_add + ".csv"
+    b = "C:/Users/Slayer/Desktop/작업폴더/" + directory + "/" + name_add + ".csv"
 
     # 파일 열기
     f_csv = open(b, 'w', newline='')
@@ -47,7 +86,7 @@ for i in range(0,8):
     # log파일이 10개라 10번 루프
     for j in range(0, 10):
         a = ""
-        a = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + str(name) + "/00" + str(j) + "_dstat_log.txt"
+        a = "C:/Users/Slayer/Desktop/작업폴더/" + directory + "/" + str(name) + "/00" + str(j) + "_dstat_log.txt"
         mem_stack = 0
         # 변수명을 적어주기 위해 1번만 수행
         if name_stack == 0:
@@ -84,6 +123,7 @@ for i in range(0,8):
                     for i in range(1, 61):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
 
                     write.writerow(add)
@@ -108,6 +148,7 @@ for i in range(0,8):
                     for i in range(1, 61):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
 
                     write.writerow(add)

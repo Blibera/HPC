@@ -3,10 +3,11 @@ import re
 
 name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
 name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
-
 add = []
 
 mem_stack = 0
+
+directory = ""
 
 def split(text):
     cleaned_text = re.sub('                   ', ',', text)
@@ -44,8 +45,8 @@ for i in range(0,9):
     name = name_list[i]
     name_add = name_list_add[i]
 
-    a = "C:/Users/Slayer/Desktop/NPB_19_18_45/" + name + "/000_dstat_log.txt"
-    b = "C:/Users/Slayer/Desktop/NPB_19_18_45/" + name_add + ".csv"
+    a = "C:/Users/Slayer/Desktop/" + directory + "/" + name + "/000_dstat_log.txt"
+    b = "C:/Users/Slayer/Desktop/" + directory + "/" + name_add + ".csv"
     f_1 = open(a, 'r')
     f_2 = open(a, 'r')
     f_3 = open(a, 'r')

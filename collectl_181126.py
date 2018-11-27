@@ -2,8 +2,8 @@ import csv
 import re
 
 name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
-name_list_add = ['bt_collectl','cg_collectl','ep_collectl','ft_collectl','is_collectl','lu_collectl','mg_collectl','sp_collectl']
-
+name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
+directory = "knl_npb_mcdram_newtype_1124"
 add = []
 
 name_stack = 0
@@ -32,6 +32,18 @@ def split(text):
     cleaned_text = re.sub(' ', ',', cleaned_text)
     return cleaned_text
 
+def int_num(text):
+    count_k = text.count("K")
+
+    if count_k == 0:
+        pass
+    else:
+        text = re.sub("K", "", text)
+        text = float(text)
+        text = text*1000
+    text = float(text)
+    return text
+
 for i in range(0,8):
     # 변수 초기화
     name_stack = 0
@@ -41,15 +53,14 @@ for i in range(0,8):
     name_add = name_list_add[i]
 
     # 경로 설정
-    b = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + name_add + ".csv"
+    b = "C:/Users/Slayer/Desktop/작업폴더/" + directory + "/" + name_add + ".csv"
 
     # 파일 열기
     f_csv = open(b, 'w', newline='')
-
     # log파일이 10개라 10번 루프
     for j in range(0,10):
         a = ""
-        a = "C:/Users/Slayer/Desktop/작업폴더/knl_npb_mcdram_newtype_1124/" + str(name) + "/00" + str(j) + "_collectl_log.txt"
+        a = "C:/Users/Slayer/Desktop/작업폴더/" + directory + "/" + str(name) + "/00" + str(j) + "_collectl_log.txt"
 
         # 변수명을 적어주기 위해 1번만 수행
         if name_stack == 0 :
@@ -84,6 +95,7 @@ for i in range(0,8):
                     for i in range(1, 22):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
                     cpu_stack = 0
 
@@ -93,6 +105,7 @@ for i in range(0,8):
                     for i in range(1, 9):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
                     disk_stack = 0
 
@@ -102,6 +115,7 @@ for i in range(0,8):
                     for i in range(1, 12):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
 
                     write.writerow(add)
@@ -129,6 +143,7 @@ for i in range(0,8):
                     for i in range(1, 22):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
                     cpu_stack = 0
 
@@ -138,6 +153,7 @@ for i in range(0,8):
                     for i in range(1, 9):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
                     disk_stack = 0
 
@@ -147,6 +163,7 @@ for i in range(0,8):
                     for i in range(1, 12):
                         tol = line.split(',')[i]
                         tol = re.sub('\n', '', tol)
+                        tol = int_num(tol)
                         add.append(tol)
 
                     write.writerow(add)
