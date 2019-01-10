@@ -3,7 +3,7 @@ import re
 
 name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
 name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
-directory = "NPB_23_21_53"
+directory = "ddr"
 add = []
 
 name_stack = 0
@@ -133,6 +133,7 @@ for i in range(0,8):
                 # 스택작업
                 if 'free|  epoch' in line:
                     mem_stack = 1
+                print(line)
 
         else:
             f = open(a, 'r')

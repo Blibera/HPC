@@ -3,10 +3,16 @@ import re
 
 a = "NPB_23_21_53"
 
-list_d = ["C:/Users/Slayer/Desktop/0제거/lu_collectl.csv"
+list_d = ["C:/Users/Slayer/Desktop/0제거/bt_collectl.csv"
+,"C:/Users/Slayer/Desktop/0제거/cg_collectl.csv"
+,"C:/Users/Slayer/Desktop/0제거/ep_collectl.csv"
+,"C:/Users/Slayer/Desktop/0제거/ft_collectl.csv"
+,"C:/Users/Slayer/Desktop/0제거/is_collectl.csv"
+,"C:/Users/Slayer/Desktop/0제거/lu_collectl.csv"
 ,"C:/Users/Slayer/Desktop/0제거/mg_collectl.csv"
 ,"C:/Users/Slayer/Desktop/0제거/sp_collectl.csv"]
-name_list_add = ['lu_collectl','mg_collectl','sp_collectl']
+name_list_add = ['bt_collectl','cg_collectl','ep_collectl','ft_collectl',
+                 'is_collectl','lu_collectl','mg_collectl','sp_collectl']
 
 def split(text):
     cleaned_text = re.sub('                   ', ',', text)
@@ -35,7 +41,7 @@ b = "C:/Users/Slayer/Desktop/0제거/()완료.csv"
 f_csv = open(b, 'w', newline='')
 write = csv.writer(f_csv)
 
-for i in range(0,3):
+for i in range(0,8):
     stack = 0
     f = open(list_d[i], 'r', newline='')
     add = []

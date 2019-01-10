@@ -1,26 +1,19 @@
 import csv
 import re
 
-a = "NPB_23_21_53"
+a = "작업폴더"
 
-list_d = ["C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"/bt_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//bt_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//cg_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//cg_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//ep_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//ep_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//ft_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//ft_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//is_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//is_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//lu_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//lu_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//mg_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//mg_dstat.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//sp_collectl.csv"
-,"C:/Users/Slayer/Desktop/작업폴더/"+str(a)+"//sp_dstat.csv"]
-name_list_add = ['bt_collectl','bt_dstat','cg_collectl','cg_dstat','ep_collectl','ep_dstat','ft_collectl','ft_dstat',
-                 'is_collectl','is_dstat','mg_collectl','mg_dstat','mg_collectl','mg_dstat','sp_collectl','sp_dstat']
+list_d = ["C:/Users/Slayer/Desktop/작업폴더/bt_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/cg_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/ep_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/ft_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/is_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/lu_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/mg_dstat.csv"
+,"C:/Users/Slayer/Desktop/작업폴더/sp_dstat.csv"]
+name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat',
+                 'is_dstat','lu_dstat','mg_dstat','sp_dstat']
+
 
 def split(text):
     cleaned_text = re.sub('                   ', ',', text)
@@ -46,7 +39,7 @@ def split(text):
 
 stack = 0
 
-for i in range(0,16):
+for i in range(0,8):
     f = open(list_d[i], 'r', newline='')
     listt = []
     list_t = []

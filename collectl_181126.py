@@ -2,8 +2,8 @@ import csv
 import re
 
 name_list = ['bt.c','cg.c','ep.d','ft.c','is.d','lu.c','mg.d','sp.c']
-name_list_add = ['bt_dstat','cg_dstat','ep_dstat','ft_dstat','is_dstat','lu_dstat','mg_dstat','sp_dstat']
-directory = "knl_npb_mcdram_newtype_1124"
+name_list_add = ['bt_collectl','cg_collectl','ep_collectl','ft_collectl','is_collectl','lu_collectl','mg_collectl','sp_collectl']
+directory = "ddr"
 add = []
 
 name_stack = 0
