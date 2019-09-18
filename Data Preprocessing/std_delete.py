@@ -93,6 +93,7 @@ for n in range(list_count):
         add.insert(0, add_name[n])
         add_list_2.append(add)
         add = []
+
 new_list_2 = list(map(list, zip(*add_list_2)))
 print(new_list_2)
 add = []
