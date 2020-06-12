@@ -41,8 +41,8 @@ add_std = []
 add_name = []
 k = 1
 
-f = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/3차 전처리/perf.csv", 'r', encoding='UTF8')
-ff = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/perf.csv", "w", newline='')
+f = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/Performance Analysis/3차 전처리 (PCA)/monitoring_tools_full.csv", 'r', encoding='UTF8')
+ff = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/Performance Analysis/3차 전처리 (PCA)/perf.csv", "w", newline='')
 
 while True:
     line = f.readline()

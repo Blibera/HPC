@@ -2,8 +2,10 @@ import csv
 import re
 import pandas as pd
 
-f = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/()성능 예측, 주요 변수 추출/원본 데이터/Knl 멀티노드 (Flat)/2차 통합/knl_Flat_Multi_perf_result_ep.csv", 'r', encoding='UTF8')
-ff = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/()성능 예측, 주요 변수 추출/원본 데이터/Knl 멀티노드 (Flat)/2차 통합/knl_Flat_Multi_perf_result_ep_PCA_List.csv", "w", newline='')
+local = "C:/Users/DI_Lab/Desktop/Paper_Data/Single_Paper작업/Epyc/Epyc01_collectl"
+
+f = open(str(local) + "_result_ep.csv", 'r', encoding='UTF8')
+ff = open(str(local) + "_perf_pca_name_list.csv", "w", newline='')
 write = csv.writer(ff)
 
 # PC의 개수를 카운팅 할때 사용하는 변수
@@ -111,7 +113,6 @@ for j in range(PC_num):
         if main_matrix[i][1] > top_10:
             tol = main_matrix[i][0]
             tol = tol.strip()
-            tol = re.sub('X','',tol)
             tol = re.sub('\\n','',tol)
             save_matrix.append(tol)
         else:
@@ -120,8 +121,8 @@ for j in range(PC_num):
 f.close()
 ff.close()
 
-perf_pca_name_list = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/()성능 예측, 주요 변수 추출/원본 데이터/Knl 멀티노드 (Flat)/2차 통합/knl_Flat_Multi_perf_result_ep_PCA_List.csv", 'r')
-perf_data = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/()성능 예측, 주요 변수 추출/원본 데이터/Knl 멀티노드 (Flat)/2차 통합/knl_Flat_Multi_perf.csv", 'r', encoding='UTF8')
+perf_pca_name_list = open(str(local) + "_perf_pca_name_list.csv", 'r')
+perf_data = open(str(local) + ".csv", 'r', encoding='UTF8')
 
 # csv 파일읽기, 기존방법이 문제가 있어서 변경함.
 lines = csv.reader(perf_pca_name_list)
@@ -165,7 +166,6 @@ for i in range(new_matrix_row):
     string = re.sub(':','.',string)
     string = re.sub('-','.',string)
     string = re.sub('/','.',string)
-    string = re.sub('X','d',string)
     string = string.strip()
     test.append(string)
     if check == 0:
@@ -179,4 +179,4 @@ for i in range(new_matrix_row):
 
 new_matrix = list(map(list, zip(*Perf_matrix)))
 df = pd.DataFrame(new_matrix)
-df.to_csv("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/()성능 예측, 주요 변수 추출/원본 데이터/Knl 멀티노드 (Flat)/2차 통합/PCA(수행결과).csv", header=None, index=None)
+df.to_csv(str(local) + "full_PCA.csv", header=None, index=None)

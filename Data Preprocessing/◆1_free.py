@@ -25,14 +25,19 @@ def split(text):
     return cleaned_text
 stack = 0
 add = []
-for l in range(1,3):
+for l in range(1, 2):
 
     node = str(l).zfill(2)
-    f = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/원본 데이터/node" + str(node) + "_free.txt", 'r')
-    ff = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/1차 전처리/node" + str(node) + "_free.csv", "w",newline='')
+    new_name = []
+    print(len(name))
+    for i in range(len(name)):
+        tol = "free" + node + "_" + name[i]
+        new_name.append(tol)
+    f = open("C:/Users/DI_Lab/Desktop/Paper_Data/Knl/Cache/Core64/Single/전처리 이전 데이터/knl" + str(node) + "_free.txt", 'r')
+    ff = open("C:/Users/DI_Lab/Desktop/Paper_Data/Knl/Cache/Core64/Single/1차 전처리(CSV화)/knl" + str(node) + "_free.csv", "w",newline='')
 
     write = csv.writer(ff)
-    write.writerow(name)
+    write.writerow(new_name)
     while True:
         line = f.readline()
         if not line: break

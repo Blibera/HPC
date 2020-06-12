@@ -59,18 +59,24 @@ def int_num(text):
         text = text * 1000
     return text
 
-for l in range(1,3):
+for l in range(2,3):
 
     node = str(l).zfill(2)
-    f = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/원본 데이터/node" + str(node) + "_collectl.txt", 'r')
-    ff = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/1차 전처리/node" + str(node) + "_collectl.csv", "w",
+    new_name = []
+    print(len(name))
+    for i in range(len(name)):
+        tol = "collectl" + node + "_" + name[i]
+        new_name.append(tol)
+    f = open("C:/Users/Slayer/Desktop/원본 데이터/Knl 싱글노드/knl" + str(node) + "_collectl.txt", 'r')
+    ff = open("C:/Users/Slayer/Desktop/원본 데이터/Knl 싱글노드/1차 전처리/knl" + str(node) + "_collectl.csv", "w",
               newline='')
-
+    print(f)
     write = csv.writer(ff)
-    write.writerow(name)
+    write.writerow(new_name)
     while True:
         line = f.readline()
         if not line: break
+
 
         if cpu_stack == 1:
             line = " " + line

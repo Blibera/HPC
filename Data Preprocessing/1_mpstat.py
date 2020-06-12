@@ -29,14 +29,19 @@ stack = 0
 add = []
 cpu_stack = 0
 detail_stack = 0
-for l in range(1,3):
+for l in range(1,2):
 
     node = str(l).zfill(2)
-    f = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/원본 데이터/node" + str(node) + "_mpstat.txt", 'r', encoding='UTF8')
-    ff = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/1차 전처리/node" + str(node) + "_mpstat.csv", "w",newline='')
+    new_name = []
+    print(len(name))
+    for i in range(len(name)):
+        tol = "mpstat" + node + "_" + name[i]
+        new_name.append(tol)
+    f = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/Performance Analysis/보고서용 원본 데이터/node" + str(node) + "_mpstat.txt", 'r', encoding='UTF8')
+    ff = open("C:/Users/DI_Lab/Desktop/연구실 자료/Kisti 관련/Performance Analysis/1차 전처리 (csv)/node" + str(node) + "_mpstat.csv", "w",newline='')
 
     write = csv.writer(ff)
-    write.writerow(name)
+    write.writerow(new_name)
     while True:
         line = f.readline()
         if not line: break

@@ -1,7 +1,6 @@
-import csv
 import re
 
-name = ["r","b","swpd","free","buff","cache","si","so","bi","bo","in","cs","us","sy","id","wa","st"]
+a = "branch-instructions, branch-misses, bus-cycles, cache-misses, cache-references, cpu-cycles, instructions, ref-cycles, alignment-faults, context-switches, cpu-clock, cpu-migrations, dummy, emulation-faults, major-faults, minor-faults, page-faults, task-clock, L1-dcache-load-misses, L1-icache-load-misses, L1-icache-loads, LLC-loads, LLC-stores, branch-load-misses, branch-loads, dTLB-load-misses, iTLB-load-misses, iTLB-loads, cpu/branch-instructions/, cpu/branch-misses/, cpu/cache-misses/, cpu/cache-references/, cpu/cpu-cycles/, cpu/instructions/, msr/aperf/, msr/mperf/, msr/tsc/"
 
 def split(text):
     cleaned_text = re.sub('                   ', ',', text)
@@ -25,31 +24,6 @@ def split(text):
     cleaned_text = re.sub(' ', ',', cleaned_text)
     return cleaned_text
 
-stack = 0
-add = []
-
-for l in range(1,3):
-
-    node = str(l).zfill(2)
-    f = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/원본 데이터/node" + str(node) + "_vmstat.txt", 'r', encoding='UTF8')
-    ff = open("C:/Users/Slayer/Desktop/연구실 자료/Kisti 관련/Performance Analysis/1차 전처리/node" + str(node) + "_vmstat.csv", "w",newline='')
-
-    write = csv.writer(ff)
-    write.writerow(name)
-    while True:
-        line = f.readline()
-        if not line: break
-
-        if 'memory' in line:
-            pass
-        elif 'swpd' in line:
-            pass
-        else:
-            line = split(line)
-            for i in range(1, 18):
-                tol = line.split(',')[i]
-                tol = re.sub('\n', '', tol)
-                tol = int(tol)
-                add.append(tol)
-            write.writerow(add)
-            add = []
+a = re.sub(',',"\",\"",a)
+a = re.sub(' ', '', a)
+print(a)
